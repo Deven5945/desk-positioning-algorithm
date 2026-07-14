@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>교실 자리 교체 최적화 시스템</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>교실 자리 교체 최적화 시스템</h1>
+    <p>교실에서 책상을 옮길 때 가장 빠른 이동 순서와 경로를 계산하는 시뮬레이터</p>
+  </header>
+
+  <main>
+    <section class="controls-panel">
+      <div class="control-group">
+        <label for="strategy-select">알고리즘 선택</label>
+        <select id="strategy-select">
+          <option value="number">번호순 이동</option>
+          <option value="simultaneous">동시 이동</option>
+          <option value="astarschedule">A* + 스케줄링</option>
+        </select>
+      </div>
+      <div class="control-row">
+        <button id="reset-button">교실 초기화</button>
+        <button id="random-button">목표 재생성</button>
+        <button id="run-button">시뮬레이션 실행</button>
+      </div>
+      <div class="metrics-card">
+        <h2>측정 결과</h2>
+        <ul id="metric-list">
+          <li>총 소요시간: <span id="metric-time">-</span></li>
+          <li>방지한 충돌: <span id="metric-collisions">-</span></li>
+          <li>평균 대기시간: <span id="metric-wait">-</span></li>
+          <li>총 이동거리: <span id="metric-distance">-</span></li>
+          <li>완료 학생: <span id="metric-completed">-</span></li>
+          <li>종료 상태: <span id="metric-status">-</span></li>
+        </ul>
+      </div>
+      <div class="comparison-card">
+        <h2>비교</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>알고리즘</th>
+              <th>총 시간</th>
+              <th>방지한 충돌</th>
+              <th>평균 대기</th>
+              <th>거리</th>
+              <th>완료</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>번호순</td><td id="compare-number">-</td><td id="compare-number-collisions">-</td><td id="compare-number-wait">-</td><td id="compare-number-distance">-</td><td id="compare-number-completed">-</td></tr>
+            <tr><td>동시 이동</td><td id="compare-simultaneous">-</td><td id="compare-simultaneous-collisions">-</td><td id="compare-simultaneous-wait">-</td><td id="compare-simultaneous-distance">-</td><td id="compare-simultaneous-completed">-</td></tr>
+            <tr><td>A* + 스케줄링</td><td id="compare-astarschedule">-</td><td id="compare-astarschedule-collisions">-</td><td id="compare-astarschedule-wait">-</td><td id="compare-astarschedule-distance">-</td><td id="compare-astarschedule-completed">-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="canvas-panel">
+      <div class="canvas-header">
+        <span id="status-label">준비 중...</span>
+        <span id="step-label">0 / 0</span>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="classroom-canvas" width="720" height="600"></canvas>
+      </div>
+      <div class="legend">
+        <div><span class="legend-box goal"></span> 목표 자리 (주황 번호)</div>
+        <div><span class="legend-box occupied"></span> 현재 자리</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>5×6 교실, 30명 학생, MAPF 기반 경로 최적화</p>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
