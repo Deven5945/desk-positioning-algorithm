@@ -3,8 +3,6 @@ export class Classroom {
     this.rows = rows;
     this.cols = cols;
     this.cells = rows * cols;
-    // Seats occupy even coordinates; the coordinates between them represent
-    // the physical aisles through which desks can be carried.
     this.movementRows = rows * 2 - 1;
     this.movementCols = cols * 2 - 1;
   }

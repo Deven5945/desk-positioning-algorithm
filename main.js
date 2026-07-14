@@ -33,10 +33,8 @@ const compare = {
 };
 
 const simulation = new Simulation(canvas, updateStatus);
-// Expose simulation for automated testing and debugging in the page context.
 window.simulation = simulation;
 
-// Run repeated simulations without animation. Returns an array of results.
 window.runRepeatTests = function runRepeatTests(iterations = 10) {
   const out = [];
   for (let i = 0; i < iterations; i += 1) {
@@ -54,7 +52,6 @@ window.runRepeatTests = function runRepeatTests(iterations = 10) {
   return out;
 };
 
-// Run many iterations and capture failing cases for a given strategy.
 window.runCaptureFailures = function runCaptureFailures({ iterations = 50, strategy = 'astarschedule', thresholdDistance = 500 } = {}) {
   const failures = [];
   for (let i = 0; i < iterations; i += 1) {

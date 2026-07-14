@@ -15,8 +15,6 @@ function cloneStudents(students) {
   return students.map((student) => {
     const clone = new Student(student.id, student.start);
     clone.setGoal(student.goal);
-    // Each comparison must start from the same original layout. The visible
-    // students may currently be at their targets after a previous animation.
     return clone;
   });
 }
@@ -89,8 +87,6 @@ function selectSequentialMove(students, occupied, classroom, activeStudentId, st
     return { proposal: candidates[0], activeStudentId: candidates[0].student.id };
   }
 
-  // Every remaining goal is occupied. Move one desk into a free aisle so the
-  // student targeting its old seat can be scheduled on the next step.
   const seed = findSeedProposals(
     unfinished,
     occupied,
@@ -265,10 +261,6 @@ export class Simulation {
         });
       }
 
-      // Detect 2-cycle (A <-> B swap) proposals and try to break them by
-      // moving one participant into a free neighbouring aisle cell. This
-      // converts a head-on swap (which resolveConflicts rejects) into a
-      // stepwise move so the swap can complete in subsequent steps.
       for (let i = 0; i < proposals.length; i += 1) {
         for (let j = i + 1; j < proposals.length; j += 1) {
           const a = proposals[i];

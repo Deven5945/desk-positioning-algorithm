@@ -4,11 +4,6 @@ export function manhattan(a, b) {
   return Math.abs(a.row - b.row) + Math.abs(a.col - b.col);
 }
 
-/**
- * Finds a shortest route while treating desks that have already reached their
- * final seat as fixed obstacles. Other moving desks are handled later by the
- * scheduler because their occupancy changes on every simulation step.
- */
 export function findPath(start, goal, classroom, blocked = new Set()) {
   const startKey = positionKey(start);
   const queue = [{ pos: start, path: [start], cost: 0 }];
