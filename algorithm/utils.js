@@ -10,10 +10,6 @@ export function samePosition(a, b) {
   return a.row === b.row && a.col === b.col;
 }
 
-/**
- * Shuffles an array in place using Fisher-Yates.  Unlike repeatedly choosing
- * random indexes, every permutation has the same probability.
- */
 export function shuffleInPlace(items, random = Math.random) {
   for (let index = items.length - 1; index > 0; index -= 1) {
     const swapIndex = Math.floor(random() * (index + 1));
@@ -39,13 +35,6 @@ function hasDirectSwap(positions, goals) {
   });
 }
 
-/**
- * Creates a uniformly random, usable target layout.
- *
- * Every student moves, and no pair is assigned to simply exchange desks. The
- * latter matters because this simulator deliberately rejects head-on swaps and
- * does not model an extra temporary desk space.
- */
 export function createGoalShuffle(positions, random = Math.random) {
   if (positions.length < 3) {
     throw new Error('At least three desks are required to create this goal layout.');
