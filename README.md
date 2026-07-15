@@ -17,3 +17,5 @@ python -m http.server 8000
 - 책상 사이의 통로를 거쳐 이동
 - 한 단계에서 같은 칸을 차지할 수 없고, 맞바꾸기 이동은 금지
 - 세 칸 이상이 동시에 비워지는 순환 이동은 허용
+
+https://deven5945.github.io/desk-positioning-algorithm/
